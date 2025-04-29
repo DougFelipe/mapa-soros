@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lorem Ipsum</title>
+
+  <!-- Fonte Google -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="./src/styles/style.css">
+</head>
+<body>
+
+  <!-- Container para carregar os componentes dinamicamente -->
+  <div id="header-container"></div>
+  <div id="map-container"></div>
+  <div id="filtros-container"></div>
+  <div id="tabela-container"></div>
+
+  <!-- Scripts -->
+  <script src="./src/scripts/filtros.js"></script>
+  <script src="./src/scripts/tabela.js"></script>
+  <script>
+    // Script para carregar os componentes HTML via fetch
+    async function carregarComponentes() {
+      const carregar = async (id, caminho) => {
+        try {
+          const res = await fetch(caminho);
+          const html = await res.text();
+          document.getElementById(id).innerHTML = html;
+        } catch (error) {
+          console.error(`Erro ao carregar ${caminho}:`, error);
+        }
+      };
+
+      await carregar('header-container', './src/components/Header.html');
+      await carregar('map-container', './src/components/MapaIframe.html');
+      await carregar('filtros-container', './src/components/Filtros.html');
+      await carregar('tabela-container', './src/components/Tabela.html');
+    }
+
+    carregarComponentes();
+  </script>
+
+</body>
+</html>
