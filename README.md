@@ -11,9 +11,16 @@ A aplicação foi desenvolvida com foco em:
 - Tabela responsiva com os dados correspondentes
 - Estrutura modularizada para facilitar expansões futuras
 
-O projeto está pronto para ser hospedado na **Vercel** inicialmente para testes.
+O projeto está hospedado na **Vercel** inicialmente para testes.
 
 ---
+
+### 🔗 Link do Projeto
+
+Acesse a versão publicada do projeto através do link:
+
+👉 [https://mapa-soros.vercel.app/](https://mapa-soros.vercel.app/)
+
 
 ## 🎯 Objetivos
 
