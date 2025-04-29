@@ -19,11 +19,11 @@ header {
 
 header h1 {
   margin: 0;
-  font-size: 1.8rem;
+  font-size: 2rem;
 }
 
 header p {
-  font-size: 1rem;
+  font-size: 1.2rem;
   margin-top: 10px;
 }
 
@@ -84,6 +84,74 @@ table th {
   background-color: #e0e0e0;
 }
 
-@media (max-width: 768px) {
-  .filtros { flex-direction: column; align-items: center; }
+/* Responsividade melhorada */
+
+/* Tablets médios (768px para 992px) */
+@media (max-width: 992px) {
+  header h1 {
+    font-size: 1.8rem;
+  }
+
+  header p {
+    font-size: 1rem;
+  }
+
+  .filtros {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  iframe, .map-container {
+    height: 350px;
+  }
+}
+
+/* Celulares grandes (576px a 767px) */
+@media (max-width: 767px) {
+  header h1 {
+    font-size: 1.5rem;
+  }
+
+  header p {
+    font-size: 0.95rem;
+  }
+
+  .filtros input[type="text"],
+  .filtros select {
+    min-width: 150px;
+    width: 100%;
+  }
+
+  iframe, .map-container {
+    height: 300px;
+  }
+
+  table th, table td {
+    font-size: 0.9rem;
+    padding: 10px;
+  }
+}
+
+/* Celulares pequenos (<575px) */
+@media (max-width: 575px) {
+  header h1 {
+    font-size: 1.3rem;
+  }
+
+  header p {
+    font-size: 0.85rem;
+  }
+
+  .filtros {
+    padding: 10px;
+  }
+
+  iframe, .map-container {
+    height: 250px;
+  }
+
+  table th, table td {
+    font-size: 0.8rem;
+    padding: 8px;
+  }
 }
