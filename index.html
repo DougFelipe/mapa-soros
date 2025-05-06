@@ -1,29 +1,32 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lorem Ipsum</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mapa de Soro Antibotrópico</title>
 
   <!-- Fonte Google -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
 
-  <!-- Estilos -->
-  <link rel="stylesheet" href="./src/styles/style.css">
+  <!-- Mapbox GL CSS -->
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet" />
+
+  <!-- Estilos personalizados -->
+  <link rel="stylesheet" href="./src/styles/style.css" />
 </head>
 <body>
-
-  <!-- Container para carregar os componentes dinamicamente -->
+  <!-- Componentes carregados dinamicamente -->
   <div id="header-container"></div>
   <div id="map-container"></div>
   <div id="filtros-container"></div>
   <div id="tabela-container"></div>
 
   <!-- Scripts -->
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
   <script src="./src/scripts/filtros.js"></script>
   <script src="./src/scripts/tabela.js"></script>
+  <script src="./src/scripts/mapa.js"></script>
   <script>
-    // Script para carregar os componentes HTML via fetch
     async function carregarComponentes() {
       const carregar = async (id, caminho) => {
         try {
@@ -36,13 +39,19 @@
       };
 
       await carregar('header-container', './src/components/Header.html');
-      await carregar('map-container', './src/components/MapaIframe.html');
+      await carregar('map-container', './src/components/MapaInterativo.html');
       await carregar('filtros-container', './src/components/Filtros.html');
       await carregar('tabela-container', './src/components/Tabela.html');
+
+      // Inicializa o mapa apenas após o carregamento do HTML
+      if (typeof initMapa === 'function') {
+        initMapa();
+      } else {
+        console.error('Função initMapa() não encontrada!');
+      }
     }
 
-    carregarComponentes();
+    window.addEventListener('DOMContentLoaded', carregarComponentes);
   </script>
-
 </body>
 </html>
