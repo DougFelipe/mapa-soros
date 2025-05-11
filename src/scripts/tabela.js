@@ -20,5 +20,10 @@ const dadosExemplo = [
     });
   }
   
-  document.addEventListener('DOMContentLoaded', () => carregarTabela(dadosExemplo));
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    carregarTabela(dadosExemplo);
+  }, 100); // ou use um MutationObserver futuramente
+});
+
   
